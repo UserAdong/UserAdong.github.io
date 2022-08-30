@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Adong-first-blog</title>
+    <url>/2022/05/27/Adong-first-blog/</url>
+    <content><![CDATA[<p>也不知道这是第几次部署github了，终于算是成功了一些，这次跟随的是下面这个博客链接，感兴趣的朋友可以拿去参考。</p>
+<p><a href="https://www.cnblogs.com/chenlove/p/15058170.html">https://www.cnblogs.com/chenlove/p/15058170.html</a></p>
+]]></content>
+      <tags>
+        <tag>杂项</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/05/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>操作系统缺页次数统计</title>
+    <url>/2022/06/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BC%BA%E9%A1%B5%E6%AC%A1%E6%95%B0%E7%BB%9F%E8%AE%A1/</url>
+    <content><![CDATA[<p>过程十分坎坷，要不断的尝试不断地自己动手探寻解决方案。下面是安装过程：</p>
+<h2 id="安装系统部分："><a href="#安装系统部分：" class="headerlink" title="安装系统部分："></a>安装系统部分：</h2><p>1.每个版本方法是不完全一样的，此方法用于Ubuntu12.04版本，待编译内核为linux-3.14.1<br>可以用网址下载 <a href="http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.1.tar.xz">http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.1.tar.xz</a></p>
+<span id="more"></span>
+
+<p>也可以在terminal下可以通过wget命令下载源代码：<br>$ wget <a href="http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.1.tar.xz">http://www.kernel.org/pub/linux/kernel/v3.x/linux-3.14.1.tar.xz</a><br>2.安装Ubuntu12.04版本，磁盘分配大于50G.（一定要大于50G不然可能装不下出现系列问题）</p>
+<p><img src="https://img-blog.csdnimg.cn/f956a6e8930943b8a0ae8a5d95f76269.png#pic_center" alt="预分配空间要大于50G"></p>
+<p>3.主机下载内核linux-3.14.1.tar.xz，然后拖到虚拟机ubuntu桌面（如果拖不过去，就重启VMware,还失败百度找方法)拖不进去的话可能需要重装一下VMtools就好了</p>
+<p><img src="https://img-blog.csdnimg.cn/51355132b2e24ddd9b5d7ff9dcbdab69.png#pic_center" alt="在这里插入图片描述"></p>
+<p>4.命令：sudo su &#x2F;&#x2F;进入root权限 (可以使用uname -r命令看一下当前内核版本)</p>
+<p><img src="https://img-blog.csdnimg.cn/83fbaa16da22452384a823f77e6cc1f7.png#pic_center" alt="在这里插入图片描述"></p>
+<p>5.将内核源码压缩包放到&#x2F;usr&#x2F;src目录下解压内核压缩包然后分别执行<br>xz -d linux-3.14.1.tar.xz 和 tar -xf linux-3.14.1.tar<br>&#x2F;&#x2F;上面两步解压的过程包括文件夹的移动等操作过程可能会出现权限不允许的问题，可以在root模式下用nautilus命令进入类似于一个全权限文件系统直接进行任意文件操作（增删改查包括save以及解压提取等命令，亲测好用！）</p>
+<p><img src="https://img-blog.csdnimg.cn/b4c5af0ae7e24997b2c6f98a40efa7ac.png#pic_center" alt="在这里插入图片描述"></p>
+<p>6.依次执行（安装一些依赖，以防万一）<br>sudo apt-get install libncurses5-dev libssl-dev</p>
+<p>sudo apt-get install build-essential openssl</p>
+<p>sudo apt-get install libidn11-dev libidn11</p>
+<p>sudo apt-get install vim</p>
+<p><img src="https://img-blog.csdnimg.cn/a89d2945d37247508cd9f699d5cdec67.png#pic_center" alt="在这里插入图片描述"></p>
+<p>&#x2F;&#x2F;安装以上几个资源包可能会出现很多的小问题（比如包资源无法定位，无效的操作等），得多动手查，但是大体上就一个问题，低版本ubuntu自家源停用的问题，可以试试换源，但是换源之后也有可能还是会报错，可以参考下面的链接看看是否能解决问题：<a href="https://blog.csdn.net/qq_29214249/article/details/53508420">https://blog.csdn.net/qq_29214249/article/details/53508420</a></p>
+<h2 id="添加系统调用部分："><a href="#添加系统调用部分：" class="headerlink" title="添加系统调用部分："></a>添加系统调用部分：</h2><p>7.进入解压后的源码文件：cd &#x2F;usr&#x2F;src&#x2F;linux-3.14.1<br>&#x2F;&#x2F;建议在此拍摄快照，避免写错重来</p>
+<p>8.编辑kernel下的sys.c文件(添加服务例程): vim &#x2F;usr&#x2F;src&#x2F;linux-3.14.1&#x2F;kernel&#x2F;sys.c<br>（不想用命令行模式的话可以直接用上面说的nautilus方法直接打开文件进行编辑）<br>9.编写程序（已书上函数为例）(vim下按i插入可以编写，保存时按ESC后输入“:wq”保存退出)将以下代码放到文件中：<br>#include&lt;linux&#x2F;linkage.h&gt; &#x2F;&#x2F;在开头加入头文件:<br>asmlinkage int sys_mycall(int number) &#x2F;&#x2F;函数写到文件中<br>{<br>return number;<br>}&#x2F;&#x2F;写在哪没有固定之说，注意括号间的关系别写错了就行</p>
+<p><img src="https://img-blog.csdnimg.cn/21fd432d93fd4b198ccf9dce117cefa4.png#pic_center" alt="在这里插入图片描述"></p>
+<p>10.打开syscalls.h文件，添加相应的系统调用函数声明;<br>cd &#x2F;usr&#x2F;src&#x2F;linux-3.14.1&#x2F;arch&#x2F;x86&#x2F;include&#x2F;asm &#x2F;&#x2F;进入syscalls.h目录级<br>vim syscalls.h &#x2F;&#x2F;利用vim打开syscalls.h<br>asmlinkage int sys_mycall(int number); &#x2F;&#x2F;倒数第二行后插入函数声明</p>
+<p><img src="https://img-blog.csdnimg.cn/6ddd61d457ac4feea3c11cc6e98e1551.png#pic_center" alt="在这里插入图片描述"></p>
+<p>&#x2F;&#x2F;<strong>十分建议上面这几步代码这几行代码要手敲，不然下一步的内核编译可能会显示这一行代码编码报错</strong><br>11.打开syscall_32.tbl，添加一个没有使用的系统调用号；<br>cd &#x2F;usr&#x2F;src&#x2F;linux-3.13.3&#x2F;arch&#x2F;x86&#x2F;syscalls &#x2F;&#x2F;进入syscall_32.tbl目录级<br>vim syscall_32.tbl &#x2F;&#x2F;利用vim打开syscall_32.tbl<br>222 i386 mycall sys_mycall&#x2F;&#x2F;添加一个系统调用的id(这里用的没有使用的222号）<br>&#x2F;&#x2F;建议在此拍摄快照，避免写错重来</p>
+<p><img src="https://img-blog.csdnimg.cn/e9524a2b1c3440ef80b380cf207bd25c.png#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="编译安装内核部分："><a href="#编译安装内核部分：" class="headerlink" title="编译安装内核部分："></a>编译安装内核部分：</h2><p>12.进入内核文件进行编译: cd &#x2F;usr&#x2F;src&#x2F;linux-3.14.1<br>13.依次执行以下三条命令&#x2F;&#x2F;前面没有安装好资源包的话这几步便会报错，建议多拍快照，方便退回前一步的状态。<br>sudo make mrproper<br>sudo make clean<img src="https://img-blog.csdnimg.cn/2309b7413d4d4959b7ef5297bf38a7b6.png#pic_center" alt="在这里插入图片描述"></p>
+<p>sudo make menuconfig</p>
+<p><img src="https://img-blog.csdnimg.cn/366b38733e4d4b77888e9c41d2b39b62.png#pic_center" alt="在这里插入图片描述"></p>
+<p>其中mrproper为清除编译过程中产生的所有中间文件，clean为清除上一次产生的编译中间文件,在menuconfig中出现选择的图形化界面后，直接按右方向键选择到exit退出，退出提示中选择保存，实现内核的默认配置。<br>执行： sudo make -j4 &#x2F;&#x2F;<strong>此步为编译内核,大概一个小时完成</strong><br>14.执行： sudo make modules_install &#x2F;&#x2F;此步为安装内核模块<br><img src="https://img-blog.csdnimg.cn/95b609df53d04539ab6326f34f1177cc.png#pic_center" alt="在这里插入图片描述"><br>15.执行： sudo make install &#x2F;&#x2F;此步为安装内核<br><img src="https://img-blog.csdnimg.cn/84b71c2fe99e4a25a68e57d0a94e69ba.png#pic_center" alt="在这里插入图片描述"></p>
+<p>16.重启系统 reboot<br>启动后输入命令 uname -r 看输出是不是3.14.1 证明成功了<br><img src="https://img-blog.csdnimg.cn/9ca8a009d593406b8629b0c07d6e4db3.png#pic_center" alt="在这里插入图片描述"></p>
+<p>重启前</p>
+<p><img src="https://img-blog.csdnimg.cn/ab7533b05db14b29a12199e0309abf35.png#pic_center" alt="在这里插入图片描述"><br>重启后<br>测试新的系统调用<br>随便一个路径 vim test.c<br>编辑代码：<br><img src="https://img-blog.csdnimg.cn/dacbe5743afd43d7b3929329614ae4df.png#pic_center" alt="在这里插入图片描述"></p>
+<p>按ESC后输入 :wq 退出<br>编译： gcc -o test test.c<br>运行： .&#x2F;test<br>看是否正常输出。（很奇怪的一点是按道理好像应该是输出的1。。。。）<br><img src="https://img-blog.csdnimg.cn/1a3225d513b1475ab0516f3d2a1df125.png#pic_center" alt="在这里插入图片描述"></p>
+<p>大致过程如上所述，欢迎一起讨论指正~！</p>
+<p>或者参考：<a href="https://blog.csdn.net/liadong/article/details/125391167?spm=1001.2014.3001.5502">https://blog.csdn.net/liadong/article/details/125391167?spm=1001.2014.3001.5502</a>)</p>
+]]></content>
+      <tags>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+</search>
